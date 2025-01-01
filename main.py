@@ -6,6 +6,7 @@ from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from shot import Shot
 from scoreboard import *
+from background import *
 
 
 def main():
@@ -14,6 +15,8 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     pygame.display.set_caption("Asteroid Game")
+    
+    background = Background("stockPhotoOfOuterSpace.jpg", speed= 100)
 
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
@@ -41,6 +44,8 @@ def main():
         for obj in updatable:
             obj.update(dt)
 
+        background.update(dt)
+
         for asteroid in asteroids:
             if asteroid.collides_with(player):
                 print("Game over!")
@@ -53,11 +58,12 @@ def main():
                     score.Scored(1)
 
         screen.fill("black")
+        background.draw(screen)
         score.scoring(screen)
-
+        
         for obj in drawable:
             obj.draw(screen)
-
+        
         pygame.display.flip()
 
         # limit the framerate to 60 FPS

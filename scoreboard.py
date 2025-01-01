@@ -8,7 +8,7 @@ class Score:
 
     def scoring(self, gameDisplay):
         text = self.smallfont.render("score: " + str(self.score), True, (255, 0, 0))
-        gameDisplay.blit(text, [SCREEN_WIDTH - 100,0])
+        gameDisplay.blit(text, [SCREEN_WIDTH - 150,0])
 
     def Scored(self, points):
         self.score += points
