@@ -3,12 +3,12 @@ from constants import *
 
 class Score:
     def __init__(self):
-        self.score = 0
-        self.smallfont = pygame.font.Font(None, 36)
-
-    def scoring(self, gameDisplay):
-        text = self.smallfont.render("score: " + str(self.score), True, (255, 0, 0))
-        gameDisplay.blit(text, [SCREEN_WIDTH - 150,0])
-
+        self.value = 0
+        self.font = pygame.font.Font(None, 36)
+    
     def Scored(self, points):
-        self.score += points
+        self.value += points
+
+    def display(self, screen):
+        text = self.font.render(f"Score: {self.value}", True, (200, 0, 0))
+        screen.blit(text, (10, 10))
